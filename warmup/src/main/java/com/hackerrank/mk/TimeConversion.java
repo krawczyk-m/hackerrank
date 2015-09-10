@@ -7,24 +7,6 @@ import java.util.Scanner;
 
 public class TimeConversion {
 
-    public static String staircase(int n) {
-
-        StringBuilder sb = new StringBuilder();
-
-        for (int height = n; height > 0; height--) {
-            int i = 0;
-            for (; i < height - 1; i++) {
-                sb.append(' ');
-            }
-            for ( ; i < n; i++) {
-                sb.append('#');
-            }
-            sb.append('\n');
-        }
-
-        return sb.toString();
-    }
-
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
@@ -32,8 +14,10 @@ public class TimeConversion {
 
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ssaa");
 
+        SimpleDateFormat sdf24 = new SimpleDateFormat("HH:mm:ss");
+
         try {
-            System.out.println(sdf.parse(date).toString());
+            System.out.println(sdf24.format(sdf.parse(date)));
         } catch (ParseException e) {
             e.printStackTrace();
         }
