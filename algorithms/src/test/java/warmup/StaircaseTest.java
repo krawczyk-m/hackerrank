@@ -1,7 +1,5 @@
-package com.hakerrank.mk;
+package warmup;
 
-
-import com.hackerrank.mk.Staircase;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

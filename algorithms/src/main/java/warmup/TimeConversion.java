@@ -1,4 +1,4 @@
-package com.hackerrank.mk;
+package warmup;
 
 
 import java.text.ParseException;

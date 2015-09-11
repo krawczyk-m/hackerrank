@@ -1,8 +1,7 @@
-package com.hakerrank.mk;
+package warmup;
 
-import com.hackerrank.mk.DiagonalDifference;
-import com.hackerrank.mk.exceptions.MissingArgumentException;
 import org.junit.Test;
+import warmup.exceptions.MissingArgumentException;
 
 import java.util.Scanner;
 
@@ -57,7 +56,7 @@ public class DiagonalDifferenceTest {
                 append("3\n").
                 append("1 2 3\n").
                 append("2 3 4\n").
-                append("4 5 \n").toString();
+                append("4 5 6\n").toString();
 
         Scanner scanner = new Scanner(input);
 

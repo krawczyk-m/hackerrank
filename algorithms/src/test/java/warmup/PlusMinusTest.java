@@ -1,13 +1,13 @@
-package com.hakerrank.mk;
+package warmup;
 
-import com.hackerrank.mk.PlusMinus;
-import com.hackerrank.mk.exceptions.MissingArgumentException;
 import org.junit.Test;
+import warmup.exceptions.MissingArgumentException;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
 import static org.junit.Assert.assertEquals;
+
 
 public class PlusMinusTest {
 

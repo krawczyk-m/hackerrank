@@ -1,4 +1,5 @@
-import com.hackerrank.mk.ExtraLongFactorial;
+package warmup;
+
 import org.junit.Test;
 
 import java.math.BigInteger;

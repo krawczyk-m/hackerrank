@@ -1,7 +1,7 @@
-package com.hackerrank.mk;
+package warmup;
 
 
-import com.hackerrank.mk.exceptions.MissingArgumentException;
+import warmup.exceptions.MissingArgumentException;
 
 import java.util.ArrayList;
 import java.util.List;

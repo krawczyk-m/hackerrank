@@ -1,4 +1,4 @@
-package com.hackerrank.mk.exceptions;
+package warmup.exceptions;
 
 /**
  * Created by kravvcu on 09.09.15.

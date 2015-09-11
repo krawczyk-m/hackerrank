@@ -1,6 +1,5 @@
-package com.hakerrank.mk;
+package warmup;
 
-import com.hackerrank.mk.Solution;
 import org.junit.Test;
 
 import java.util.ArrayList;
