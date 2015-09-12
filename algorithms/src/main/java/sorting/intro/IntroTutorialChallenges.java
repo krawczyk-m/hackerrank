@@ -19,14 +19,11 @@ public class IntroTutorialChallenges {
 
         if (q == -1) return -1;
 
-        if (arr[p] == n) return p;
-        if (arr[q] == n) return q;
-
-        while (p != q - 1) {
+        while (p <= q) {
             r = (int) Math.floor((p+q)/2);
             if (arr[r] == n) return r;
-            else if (arr[r] > n) q = r;
-            else p = r;
+            else if (arr[r] > n) q = r - 1;
+            else p = r + 1;
         }
 
         return -1; // not found
