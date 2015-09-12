@@ -5,7 +5,11 @@ package warmup.exceptions;
  */
 public class MissingArgumentException extends Exception {
 
-    public MissingArgumentException() { super(); }
+  public MissingArgumentException() {
+    super();
+  }
 
-    public MissingArgumentException(String message) { super(message); }
+  public MissingArgumentException(String message) {
+    super(message);
+  }
 }

@@ -4,43 +4,43 @@ import java.util.Scanner;
 
 public class IntroTutorialChallenges {
 
-    public static int linearSearch(int[] arr, int n) {
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == n) return i;
-        }
-
-        return -1;
+  public static int linearSearch(int[] arr, int n) {
+    for (int i = 0; i < arr.length; i++) {
+      if (arr[i] == n) return i;
     }
 
-    public static int binarySearch(int[] arr, int n) {
-        int p = 0;
-        int q = arr.length - 1;
-        int r;
+    return -1;
+  }
 
-        if (q == -1) return -1;
+  public static int binarySearch(int[] arr, int n) {
+    int p = 0;
+    int q = arr.length - 1;
+    int r;
 
-        while (p <= q) {
-            r = (int) Math.floor((p+q)/2);
-            if (arr[r] == n) return r;
-            else if (arr[r] > n) q = r - 1;
-            else p = r + 1;
-        }
+    if (q == -1) return -1;
 
-        return -1; // not found
+    while (p <= q) {
+      r = (int) Math.floor((p + q) / 2);
+      if (arr[r] == n) return r;
+      else if (arr[r] > n) q = r - 1;
+      else p = r + 1;
     }
 
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
+    return -1; // not found
+  }
 
-        int n = in.nextInt();
-        int size = in.nextInt();
+  public static void main(String[] args) {
+    Scanner in = new Scanner(System.in);
 
-        int[] arr = new int[size];
+    int n = in.nextInt();
+    int size = in.nextInt();
 
-        for (int i = 0; i < size; i++) {
-            arr[i] = in.nextInt();
-        }
+    int[] arr = new int[size];
 
-        System.out.println(binarySearch(arr, n));
+    for (int i = 0; i < size; i++) {
+      arr[i] = in.nextInt();
     }
+
+    System.out.println(binarySearch(arr, n));
+  }
 }
