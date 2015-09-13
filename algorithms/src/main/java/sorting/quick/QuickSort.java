@@ -1,40 +1,17 @@
 package sorting.quick;
 
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class QuickSort {
 
-  private static void partition(int[] ar, int p, int q) {
-    if (q <= p) {
-      return;
-    }
+  public static int partition(int[] ar, int p, int q) {
+    int pivot = ar[q];
+    int wall = p;
 
-    int valPos = p;
-
-    for (int i = p + 1; i <= q; ++i) {
-      if (ar[i] >= ar[valPos]) {
-        continue;
-      }
-      // else shift and insert lower
-      int tmp = ar[i];
-      for (int j = i - 1; j >= valPos; --j) {
-        ar[j+1] = ar[j];
-      }
-      ar[valPos++] = tmp;
-    }
-    partition(ar, p, valPos - 1);
-//    printArray(ar, p, valPos - 1);
-    partition(ar, valPos + 1, q);
-//    printArray(ar, valPos + 1, q);
-  }
-
-  public static int[] _partition(int[] ar) {
-    int pivotPos = 0;
-    int wall = 1;
-
-    for (int i = 1; i < ar.length; ++i) {
-      if (ar[i] >= ar[pivotPos]) {
+    for (int i = p; i < q; ++i) {
+      if (ar[i] >= pivot) {
         continue;
       }
       // else swap
@@ -42,17 +19,26 @@ public class QuickSort {
       ar[i] = ar[wall];
       ar[wall++] = tmp;
     }
-    int tmp = ar[wall - 1];
-    ar[wall - 1] = ar[pivotPos];
-    ar[pivotPos] = tmp;
+    int tmp = ar[wall];
+    ar[wall] = pivot;
+    ar[q] = tmp;
 
     printArray(ar);
-    return ar;
+    return wall;
   }
 
   public static int[] quickSort(int[] arr) {
-    partition(arr, 0, arr.length - 1);
+    quickSort(arr, 0, arr.length - 1);
     return arr;
+  }
+
+  private static void quickSort(int[] arr, int p, int q) {
+    int pivotIdx;
+    if (p < q) {
+      pivotIdx = partition(arr, p, q);
+      quickSort(arr, p, pivotIdx - 1);
+      quickSort(arr, pivotIdx + 1, q);
+    }
   }
 
   private static void printArray(int[] ar) {
@@ -81,6 +67,5 @@ public class QuickSort {
     }
 
     quickSort(ar);
-    printArray(ar);
   }
 }
