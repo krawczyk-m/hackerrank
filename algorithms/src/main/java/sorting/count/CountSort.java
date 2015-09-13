@@ -7,6 +7,15 @@ import static utils.Util.printArray;
 
 public class CountSort {
 
+  private static void printSorted(int[] arr) {
+    for (int i = 0; i < arr.length; ++i) {
+      int count = arr[i];
+      for (int j = 0; j < count; ++j) {
+        System.out.print(i + " ");
+      }
+    }
+  }
+
   public static void main(String[] args) {
     Scanner in = new Scanner(System.in);
 
@@ -18,6 +27,7 @@ public class CountSort {
       ++occurrences[in.nextInt()];
     }
 
-    printArray(occurrences);
+//    printArray(occurrences);
+    printSorted(occurrences);
   }
 }
