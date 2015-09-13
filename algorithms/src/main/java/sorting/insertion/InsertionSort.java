@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 public class InsertionSort {
 
+  public static int SWAPS = 0;
+
   private static void printArrayList(ArrayList<?> arr) {
     for (Object obj : arr) {
       System.out.print(MessageFormat.format("{0} ", obj));
@@ -44,8 +46,9 @@ public class InsertionSort {
         int tmp = arr[j+1];
         arr[j+1] = arr[j];
         arr[j] = tmp;
+        SWAPS++;
       }
-      printArray(arr);
+//      printArray(arr);
     }
     return arr;
   }
@@ -55,12 +58,14 @@ public class InsertionSort {
 
     int N = in.nextInt();
     ArrayList<Integer> arr = new ArrayList<Integer>();
+    int[] ar = new int[N];
 
-    while (N-- > 0) {
-      arr.add(in.nextInt());
+    for (int i = 0; i < N; i++) {
+//      arr.add(in.nextInt());
+      ar[i] = in.nextInt();
     }
 
-    arr = _insertionSort(arr);
-    printArrayList(arr);
+    insertionSort(ar);
+    System.out.println("insertionsort: " + SWAPS + " swaps");
   }
 }

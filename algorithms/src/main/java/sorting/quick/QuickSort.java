@@ -1,10 +1,14 @@
 package sorting.quick;
 
 
+import sorting.insertion.InsertionSort;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class QuickSort {
+
+  public static int SWAPS = 0;
 
   public static int partition(int[] ar, int p, int q) {
     int pivot = ar[q];
@@ -18,12 +22,14 @@ public class QuickSort {
       int tmp = ar[i];
       ar[i] = ar[wall];
       ar[wall++] = tmp;
+      SWAPS++;
     }
     int tmp = ar[wall];
     ar[wall] = pivot;
     ar[q] = tmp;
+    SWAPS++;
 
-    printArray(ar);
+//    printArray(ar);
     return wall;
   }
 
@@ -61,11 +67,15 @@ public class QuickSort {
 
     int n = in.nextInt();
     int[] ar = new int[n];
+    int[] ar2 = new int[n];
 
     for(int i=0;i<n;i++){
       ar[i]=in.nextInt();
+      ar2[i] = ar[i];
     }
 
     quickSort(ar);
+    InsertionSort.insertionSort(ar2);
+    System.out.println(InsertionSort.SWAPS - SWAPS);
   }
 }
