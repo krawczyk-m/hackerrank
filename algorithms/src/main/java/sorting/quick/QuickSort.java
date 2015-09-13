@@ -23,6 +23,27 @@ public class QuickSort {
     return ar;
   }
 
+  public static int[] _partition(int[] ar) {
+    int pivotPos = 0;
+    int wall = 1;
+
+    for (int i = 1; i < ar.length; ++i) {
+      if (ar[i] >= ar[pivotPos]) {
+        continue;
+      }
+      // else swap
+      int tmp = ar[i];
+      ar[i] = ar[wall];
+      ar[wall++] = tmp;
+    }
+    int tmp = ar[wall - 1];
+    ar[wall - 1] = ar[pivotPos];
+    ar[pivotPos] = tmp;
+
+    printArray(ar);
+    return ar;
+  }
+
   private static void printArray(int[] ar) {
     for(int n: ar){
       System.out.print(n+" ");
