@@ -8,23 +8,26 @@ import static org.junit.Assert.assertArrayEquals;
 public class QuickSortTest {
 
   @Test
-  public void partitionTest() {
+  public void quicksortTest() {
     int[] empty = {};
-    assertArrayEquals(empty, QuickSort.partition(empty));
+    assertArrayEquals(empty, QuickSort.quickSort(empty));
 
     int[] one = {1};
-    assertArrayEquals(one, QuickSort.partition(one));
+    assertArrayEquals(one, QuickSort.quickSort(one));
 
-    int[] twoPartitioned = {-2, 5};
-    assertArrayEquals(twoPartitioned, QuickSort.partition(twoPartitioned));
+    int[] twoSorted = {-2, 5};
+    assertArrayEquals(twoSorted, QuickSort.quickSort(twoSorted));
 
-    int[] twoUnpartitioned = {7, 3};
-    assertArrayEquals(twoUnpartitioned, QuickSort.partition(twoUnpartitioned));
+    int[] twoUnsorted = {7, 3};
+    assertArrayEquals(new int[]{3, 7}, QuickSort.quickSort(twoUnsorted));
 
-    int[] unpartitioned = {4, 5, 3, 7, 2};
-    assertArrayEquals(new int[]{3, 2, 4, 5, 7}, QuickSort.partition(unpartitioned));
+    int[] sorted = {-2414, -100, -8, 1, 2, 3, 4, 5, 77, 500};
+    assertArrayEquals(new int[]{-2414, -100, -8, 1, 2, 3, 4, 5, 77, 500}, QuickSort.quickSort(sorted));
 
-    int[] unpartitioned2 = {-4, 1, 5, -5, 2, -7};
-    assertArrayEquals(new int[]{-5, -7, -4, 1, 5, 2}, QuickSort.partition(unpartitioned2));
+    int[] unsorted = {4, 5, -8, 1, -100, -2414, 3, 7, 500, 2};
+    assertArrayEquals(new int[]{-2414, -100, -8, 1, 2, 3, 4, 5, 7, 500}, QuickSort.quickSort(unsorted));
+
+    int[] unsorted2 = {-4, 1, 5, -5, 2, -7, 500, -400, -222, 44};
+    assertArrayEquals(new int[]{-400, -222, -7, -5, -4, 1, 2, 5, 44, 500}, QuickSort.quickSort(unsorted2));
   }
 }

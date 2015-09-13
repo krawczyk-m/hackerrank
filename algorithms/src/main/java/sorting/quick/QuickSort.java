@@ -5,10 +5,14 @@ import java.util.Scanner;
 
 public class QuickSort {
 
-  public static int[] partition(int[] ar) {
-    int valPos = 0;
+  private static void partition(int[] ar, int p, int q) {
+    if (q <= p) {
+      return;
+    }
 
-    for (int i = 1; i < ar.length; ++i) {
+    int valPos = p;
+
+    for (int i = p + 1; i <= q; ++i) {
       if (ar[i] >= ar[valPos]) {
         continue;
       }
@@ -19,8 +23,10 @@ public class QuickSort {
       }
       ar[valPos++] = tmp;
     }
-    printArray(ar);
-    return ar;
+    partition(ar, p, valPos - 1);
+//    printArray(ar, p, valPos - 1);
+    partition(ar, valPos + 1, q);
+//    printArray(ar, valPos + 1, q);
   }
 
   public static int[] _partition(int[] ar) {
@@ -44,9 +50,22 @@ public class QuickSort {
     return ar;
   }
 
+  public static int[] quickSort(int[] arr) {
+    partition(arr, 0, arr.length - 1);
+    return arr;
+  }
+
   private static void printArray(int[] ar) {
-    for(int n: ar){
-      System.out.print(n+" ");
+    printArray(ar, 0, ar.length - 1);
+  }
+
+  private static void printArray(int[] ar, int p, int q) {
+    if (q <= p) {
+      return;
+    }
+
+    for (int i = p; i <= q; ++i) {
+      System.out.print(ar[i]+" ");
     }
     System.out.println("");
   }
@@ -60,6 +79,8 @@ public class QuickSort {
     for(int i=0;i<n;i++){
       ar[i]=in.nextInt();
     }
-    partition(ar);
+
+    quickSort(ar);
+    printArray(ar);
   }
 }
