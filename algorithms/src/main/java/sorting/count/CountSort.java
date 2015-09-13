@@ -29,15 +29,39 @@ public class CountSort {
 
     int N = in.nextInt();
 
-    int[] occurrences = new int[100];
+//    int[] occurrences = new int[100];
+    StringBuilder[] strings = new StringBuilder[100];
 
-    for (int i = 0; i < N; ++i) {
-      ++occurrences[in.nextInt()];
-      in.nextLine(); // discard strings
+    for (int i = 0; i < strings.length; ++i) {
+      strings[i] = new StringBuilder("");
+    }
+    String word = "";
+    int num;
+    StringBuilder output = new StringBuilder("");
+
+    int half = N/2;
+
+    for (int i = 0; i < half; ++i) {
+      num = in.nextInt();
+      in.nextLine();
+      strings[num].append("- ");
+    }
+
+    for (int i = half; i < N; ++i) {
+      num = in.nextInt();
+      word = in.next() + " ";
+      strings[num].append(word);
     }
 
 //    printArray(occurrences);
 //    printSorted(occurrences);
-    printCumulative(occurrences);
+//    printCumulative(occurrences);
+//    printArray(strings);
+
+    for(int i = 0; i < 100; ++i) {
+      output.append(strings[i].toString());
+      }
+
+    System.out.print(output.toString());
   }
 }

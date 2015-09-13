@@ -13,6 +13,7 @@ public class Util {
   public static <T> void printArray(T[] arr) {
     for (T anArr : arr) {
       System.out.print(anArr + " ");
+//      System.out.print(anArr);
     }
     System.out.println("");
   }
