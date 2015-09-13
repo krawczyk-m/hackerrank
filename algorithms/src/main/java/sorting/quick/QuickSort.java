@@ -46,21 +46,6 @@ public class QuickSort {
     }
   }
 
-  private static void printArray(int[] ar) {
-    printArray(ar, 0, ar.length - 1);
-  }
-
-  private static void printArray(int[] ar, int p, int q) {
-    if (q <= p) {
-      return;
-    }
-
-    for (int i = p; i <= q; ++i) {
-      System.out.print(ar[i]+" ");
-    }
-    System.out.println("");
-  }
-
   public static void main(String[] args) {
     Scanner in = new Scanner(System.in);
 
