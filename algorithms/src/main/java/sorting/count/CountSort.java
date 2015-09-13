@@ -16,6 +16,14 @@ public class CountSort {
     }
   }
 
+  private static void printCumulative(int[] arr) {
+    int lessOrEqual = 0;
+    for (int i = 0; i < arr.length; ++i) {
+      lessOrEqual += arr[i];
+      System.out.print(lessOrEqual + " ");
+    }
+  }
+
   public static void main(String[] args) {
     Scanner in = new Scanner(System.in);
 
@@ -25,9 +33,11 @@ public class CountSort {
 
     for (int i = 0; i < N; ++i) {
       ++occurrences[in.nextInt()];
+      in.nextLine(); // discard strings
     }
 
 //    printArray(occurrences);
-    printSorted(occurrences);
+//    printSorted(occurrences);
+    printCumulative(occurrences);
   }
 }
