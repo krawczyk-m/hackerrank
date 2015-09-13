@@ -3,7 +3,6 @@ package sorting.quick;
 
 import sorting.insertion.InsertionSort;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class QuickSort {
