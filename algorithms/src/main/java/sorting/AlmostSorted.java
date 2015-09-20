@@ -12,41 +12,37 @@ public class AlmostSorted {
     // variables for swap checks
     int toSwap = -1;
     int toSwap2 = -1;
-    boolean canSwap = false;
-    boolean canSwap2 = false;
+    boolean canSwap = true;
 
     int n = ar.length;
+    int i = 0;
 
-    for (int i = 1; i < n; ++i) {
-      if (ar[i] < ar[i-1]) {
-        // check for swap
-        if (canSwap2) {
-          canSwap = false;
-          break;
-        } else if (toSwap == -1) {
-          toSwap = i - 1;
-          toSwap2 = i;
-          canSwap = true;
-        } else { // found second out-of-order variable
-          canSwap2 = true;
+    while(++i < n && ar[i - 1] < ar[i]) {} // search for out-of-order value
+    if (i != n) { // found out-of-order value
+      toSwap = i - 1;
 
-          boolean canSwapFirst = true;
-          canSwapFirst = canSwapFirst && (ar[i - 1] < ar[toSwap]);
-          if (i != n - 1) canSwapFirst = canSwapFirst && (ar[toSwap] < ar[i + 1]);
+      while (++i < n && ar[i - 1] < ar[i]) {} // search for another out-of-order
+      if (i != n) { // found another out-of-order
+        toSwap2 = i;
 
-          boolean canSwapSecond = true;
-          canSwapSecond = canSwapSecond && (ar[i] < ar[toSwap + 1]);
-          if (toSwap != 0) canSwapSecond = canSwapSecond && (ar[toSwap - 1] < ar[i]);
-
-          canSwap = canSwapFirst && canSwapSecond;
-          if (canSwap) toSwap2 = i;
+        while (++i < n && ar[i - 1] < ar[i]) {} // search for another out-of-order
+        if (i != n) { // found another out-of-order - cannot swap
+          return "no";
         }
+      } else { // i == n
+        toSwap2 = toSwap + 1; // must swap the first out-of-order value found with the following one
       }
+    } else { // i == n -> in order
+      return "yes";
     }
 
-    if (toSwap == -1 && toSwap2 == -1) {
-      return "yes";
-    } else if (canSwap) {
+    if (toSwap < toSwap2 - 1) canSwap = canSwap && (ar[toSwap2 - 1] < ar[toSwap]);
+    if (toSwap2 < n - 1) canSwap = canSwap && (ar[toSwap] < ar[toSwap2 + 1]);
+
+    if (toSwap < toSwap2 - 1) canSwap = canSwap && (ar[toSwap2] < ar[toSwap + 1]);
+    if (toSwap != 0) canSwap = canSwap && (ar[toSwap - 1] < ar[toSwap2]);
+
+    if (canSwap) {
       return "swap " + (toSwap + 1) + " " + (toSwap2 + 1);
     } else {
       return "no";
@@ -67,39 +63,47 @@ public class AlmostSorted {
     // variables for swap checks
     int toSwap = -1;
     int toSwap2 = -1;
-    boolean canSwap = false;
-    boolean canSwap2 = false;
+    boolean canSwap = true;
 
-    for (int i = 1; i < n; ++i) {
-      if (ar[i] < ar[i-1]) {
-        // check for swap
-        if (canSwap2) {
-          canSwap = false;
-          break;
-        } else if (toSwap == -1) {
-          toSwap = i - 1;
-          toSwap2 = i;
-          canSwap = true;
-        } else { // found second out-of-order variable
-          canSwap2 = true;
+    int i = 0;
 
-          boolean canSwapFirst = true;
-          canSwapFirst = canSwapFirst && (ar[i - 1] < ar[toSwap]);
-          if (i != n - 1) canSwapFirst = canSwapFirst && (ar[toSwap] < ar[i + 1]);
+    String ret = "";
 
-          boolean canSwapSecond = true;
-          canSwapSecond = canSwapSecond && (ar[i] < ar[toSwap + 1]);
-          if (toSwap != 0) canSwapSecond = canSwapSecond && (ar[toSwap - 1] < ar[i]);
+    while(++i < n && ar[i - 1] < ar[i]) {} // search for out-of-order value
+    if (i != n) { // found out-of-order value
+      toSwap = i - 1;
 
-          canSwap = canSwapFirst && canSwapSecond;
-          if (canSwap) toSwap2 = i;
+      while (++i < n && ar[i - 1] < ar[i]) {} // search for another out-of-order
+      if (i != n) { // found another out-of-order
+        toSwap2 = i;
+
+        while (++i < n && ar[i - 1] < ar[i]) {} // search for another out-of-order
+        if (i != n) { // found another out-of-order - cannot swap
+          ret = "no";
         }
+      } else { // i == n
+        toSwap2 = toSwap + 1; // must swap the first out-of-order value found with the following one
       }
+    } else { // i == n -> in order
+      ret = "yes";
+    }
+
+    if (toSwap < toSwap2 - 1) canSwap = canSwap && (ar[toSwap2 - 1] < ar[toSwap]);
+    if (toSwap2 < n - 1) canSwap = canSwap && (ar[toSwap] < ar[toSwap2 + 1]);
+
+    if (toSwap < toSwap2 - 1) canSwap = canSwap && (ar[toSwap2] < ar[toSwap + 1]);
+    if (toSwap != 0) canSwap = canSwap && (ar[toSwap - 1] < ar[toSwap2]);
+
+    if (canSwap) {
+      ret =  "swap " + (toSwap + 1) + " " + (toSwap2 + 1);
+    } else {
+      ret = "no";
     }
 
     if (canSwap) {
-      System.out.println("swap " + (toSwap + 1) + " " + (toSwap2 + 1));
+      System.out.println("yes");
     }
+    System.out.println(ret);
 
   }
 }

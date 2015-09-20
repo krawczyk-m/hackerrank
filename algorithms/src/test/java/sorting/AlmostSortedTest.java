@@ -32,6 +32,10 @@ public class AlmostSortedTest {
     int[] firstAndLast = {100, 11, 22, 33, 44, 55, -100};
     assertEquals("swap 1 7", AlmostSorted.sortBySwap(firstAndLast));
 
+    int[] canNotSwap = {3, 1, 2};
+    assertEquals("no", AlmostSorted.sortBySwap(canNotSwap));
 
+    int[] canNotSwap2 = {1, 9, 3, 4};
+    assertEquals("no", AlmostSorted.sortBySwap(canNotSwap2));
   }
 }
