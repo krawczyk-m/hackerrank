@@ -9,7 +9,10 @@ public class AlmostSortedTest {
   @Test
   public void testSwap() {
     int[] twoSorted = {2, 4};
-    assertEquals("", AlmostSorted.sortBySwap(twoSorted));
+    assertEquals("yes", AlmostSorted.sortBySwap(twoSorted));
+
+    int[] sorted = {1, 2, 3, 4, 5, 6};
+    assertEquals("yes", AlmostSorted.sortBySwap(sorted));
 
     int[] twoUnsorted = {4, 2};
     assertEquals("swap 1 2", AlmostSorted.sortBySwap(twoUnsorted));
@@ -28,5 +31,7 @@ public class AlmostSortedTest {
 
     int[] firstAndLast = {100, 11, 22, 33, 44, 55, -100};
     assertEquals("swap 1 7", AlmostSorted.sortBySwap(firstAndLast));
+
+
   }
 }

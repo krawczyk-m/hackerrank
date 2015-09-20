@@ -44,10 +44,13 @@ public class AlmostSorted {
       }
     }
 
-    if (canSwap) {
+    if (toSwap == -1 && toSwap2 == -1) {
+      return "yes";
+    } else if (canSwap) {
       return "swap " + (toSwap + 1) + " " + (toSwap2 + 1);
+    } else {
+      return "no";
     }
-    return "";
   }
 
   public static void main(String[] args) {
