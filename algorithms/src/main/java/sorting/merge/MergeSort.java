@@ -7,6 +7,14 @@ public class MergeSort {
     return arr;
   }
 
+  public static long SWAPS = 0;
+
+  public static long mergeSort(int[] arr, boolean insertionSortAdvanced) {
+    SWAPS = 0;
+    mergeSort(arr, 0, arr.length - 1);
+    return SWAPS;
+  }
+
   private static void mergeSort(int[] arr, int p, int q) {
     if (q - p + 1 > 1) { // q - p + 1 - number of elements to sort
       int r = (int) Math.floor((p + q) / 2);
@@ -24,9 +32,10 @@ public class MergeSort {
     int j = r + 1;
 
     for (int t = 0; t < len;) {
-      if (i < r + 1 && (j > q || arr[i] < arr[j])) {
+      if (i < r + 1 && (j > q || arr[i] <= arr[j])) {
         tmp[t++] = arr[i++];
       } else {
+        SWAPS += r + 1 - i;
         tmp[t++] = arr[j++];
       }
     }
