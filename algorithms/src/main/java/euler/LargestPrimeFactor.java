@@ -1,5 +1,7 @@
 package euler;
 
+import utils.Primes;
+
 import java.util. Scanner;
 
 public class LargestPrimeFactor {
@@ -9,24 +11,27 @@ public class LargestPrimeFactor {
     long factorLimit = N / 2 + 1;
 
     if (N % 2 == 0) {
-      largestPrime = 2;
-      for (; N % 2 == 0;) {
+      for (largestPrime = 2; N % 2 == 0;) {
         N /= 2;
       }
     }
 
     for (long divisor = 3; divisor < factorLimit; divisor += 2) {
       if (N % divisor == 0) {
-        largestPrime = divisor;
+        if (Primes.isPrime(divisor)) {
+          largestPrime = divisor;
+        }
         for (; N % largestPrime == 0;) {
           N /= divisor;
+          factorLimit = N / 2 + 1;
         }
       }
     }
 
-    if (largestPrime == 1) {
-      largestPrime = N;
+    if (N > largestPrime && Primes.isPrime(N)) {
+      return N;
     }
+
     return largestPrime;
   }
 

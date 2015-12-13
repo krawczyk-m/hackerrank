@@ -28,5 +28,8 @@ public class LargestPrimeFactorTest {
 
     N *= 9 * 88 * 23 * 44;
     assertEquals(997, LargestPrimeFactor.getLargestPrimeFactor(N));
+
+    N = 32416190071L;
+    assertEquals(N, LargestPrimeFactor.getLargestPrimeFactor(N));
   }
 }
