@@ -1,37 +1,41 @@
 package utils;
 
 import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.List;
 
 public class Primes {
 
-  public static List<Long> getPrimes(long MAX_PRIME) {
-    ArrayList<Long> primes = new ArrayList<Long>();
+  private static long MAX_NUMBER = 1000000000000L;
+  private static int MAX_PRIME = (int) Math.sqrt(MAX_NUMBER);
 
-    primes.add(2L);
+  private static List<Integer> sieve = null;
 
-    for (long number = 3L; number < MAX_PRIME; number += 2) {
-      for (Long prime : primes) {
-        if (prime > number / 2) {
-          primes.add(number);
-          break;
-        } else if (number % prime == 0) {
-          break;
+  public static List<Integer> getPrimes() {
+    if (sieve == null) {
+      initSieve();
+    }
+    return sieve;
+  }
+
+  private static void initSieve() {
+    sieve = new ArrayList<Integer>();
+
+    BitSet bs = new BitSet(MAX_PRIME + 1);
+    bs.flip(2, MAX_PRIME + 1);
+
+    for (int i = 2; i < (int) Math.sqrt(MAX_PRIME + 1); ++i) {
+      if (bs.get(i)) {
+        for (int j = i * i; j < MAX_PRIME + 1; j += i) {
+          bs.set(j, false);
         }
       }
     }
 
-    return primes;
-  }
-
-  public static boolean isPrime(long N) {
-    List<Long> primes = getPrimes((long) Math.sqrt(N) + 1);
-
-    for (Long prime : primes) {
-      if (N % prime == 0) {
-        return false;
+    for (int i = 2; i < bs.size(); ++i) {
+      if (bs.get(i)) {
+        sieve.add(i);
       }
     }
-    return true;
   }
 }

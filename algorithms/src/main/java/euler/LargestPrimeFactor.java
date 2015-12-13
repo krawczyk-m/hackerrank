@@ -2,36 +2,30 @@ package euler;
 
 import utils.Primes;
 
+import java.util.List;
 import java.util. Scanner;
 
 public class LargestPrimeFactor {
 
   public static long getLargestPrimeFactor(long N) {
     long largestPrime = 1;
-    long factorLimit = N / 2 + 1;
 
-    if (N % 2 == 0) {
-      for (largestPrime = 2; N % 2 == 0;) {
-        N /= 2;
+    List<Integer> primes = Primes.getPrimes();
+
+    for (int prime: primes) {
+      if (prime > (int) Math.sqrt(N)) {
+        break;
+      } else if (N % prime == 0) {
+        while (N % prime == 0) {
+          N /= prime;
+        }
+        largestPrime = prime;
       }
     }
 
-    for (long divisor = 3; divisor < factorLimit; divisor += 2) {
-      if (N % divisor == 0) {
-        if (Primes.isPrime(divisor)) {
-          largestPrime = divisor;
-        }
-        for (; N % largestPrime == 0;) {
-          N /= divisor;
-          factorLimit = N / 2 + 1;
-        }
-      }
+    if (N > largestPrime) {
+      largestPrime = N;
     }
-
-    if (N > largestPrime && Primes.isPrime(N)) {
-      return N;
-    }
-
     return largestPrime;
   }
 
