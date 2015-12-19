@@ -19,4 +19,10 @@ public class SumSquareDifferenceTest {
     assertEquals(36, SumSquareDifference.squareOfSum(3));
     assertEquals(3025, SumSquareDifference.squareOfSum(10));
   }
+
+  @Test
+  public void testSumSquareDifference() {
+    assertEquals(22, SumSquareDifference.sumSquareDifference(3));
+    assertEquals(2640, SumSquareDifference.sumSquareDifference(10));
+  }
 }

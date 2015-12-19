@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class SumSquareDifference {
 
   public static long sumOfSquares(int n) {
-    int sum = 0;
+    long sum = 0;
 
     for (int i = 1; i <= n; ++i) {
       sum += i * i;
@@ -23,7 +23,15 @@ public class SumSquareDifference {
   }
 
   public static long sumSquareDifference(int n) {
-    return squareOfSum(n) - sumOfSquares(n);
+    long internalPartialSum = n;
+    long sum = 0;
+
+    for (int i = n - 1; i > 0; --i) {
+      sum += i * internalPartialSum;
+      internalPartialSum += i;
+    }
+
+    return 2 * sum;
   }
 
   public static void main(String[] args) {
