@@ -10,12 +10,12 @@ public class GridTest {
   public void gridTest() {
     Grid grid = new Grid(5, 4);
 
-    assertEquals(Color.NONE, grid.get(5, 4).get());
+    assertEquals(Color.NONE, grid.get(4, 3).get());
 
-    grid.set(5, 4, Color.BAD);
-    assertEquals(Color.BAD, grid.get(5, 4).get());
+    grid.set(4, 3, Color.BAD);
+    assertEquals(Color.BAD, grid.get(4, 3).get());
 
-    grid.set(5, 4, Color.GOOD);
-    assertEquals(Color.GOOD, grid.get(5, 4).get());
+    grid.set(4, 3, Color.GOOD);
+    assertEquals(Color.GOOD, grid.get(4, 3).get());
   }
 }

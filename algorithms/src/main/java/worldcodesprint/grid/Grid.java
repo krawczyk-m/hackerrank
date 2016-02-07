@@ -21,20 +21,39 @@ public class Grid {
   }
 
   public Node get(int n, int m) {
-    return grid.get(n-1).get(m-1);
+    return ((n >= 0 && n < rows) && (m >= 0 && m < columns)) ? grid.get(n).get(m) : null;
   }
 
   public void set(int n, int m, Color color) {
-    grid.get(n-1).get(m-1).set(color);
+    grid.get(n).get(m).set(color);
   }
 
   private List<Node> createEmptyRow() {
     List<Node> row = new ArrayList<>();
 
     for (int i = 0; i < columns; ++i) {
-      row.add(new Node());
+      row.add(new Node(rows - 1, i));
     }
 
     return row;
+  }
+
+  public void print() {
+    for (int i = 0; i < rows; ++i) {
+      for (int j = 0; j < columns; ++j) {
+        System.out.print(this.get(i, j));
+      }
+      System.out.println();
+    }
+  }
+
+  public void fill(String colors) {
+    for (int i = 0; i < rows; ++i) {
+      for (int j = 0; j < columns; ++j) {
+        int index = i * columns + j;
+        Color color = Color.COLORMAP.get(colors.charAt(index));
+        set(i, j, color);
+      }
+    }
   }
 }
