@@ -47,6 +47,14 @@ public class Grid {
     }
   }
 
+  public int rowSize() {
+    return rows;
+  }
+
+  public int columnSize() {
+    return columns;
+  }
+
   public void fill(String colors) {
     for (int i = 0; i < rows; ++i) {
       for (int j = 0; j < columns; ++j) {
