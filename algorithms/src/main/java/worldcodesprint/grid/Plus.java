@@ -39,6 +39,6 @@ public class Plus {
   }
 
   public int area() {
-    return 4 * (range - 1) + 1;
+    return 4 * range + 1;
   }
 }
