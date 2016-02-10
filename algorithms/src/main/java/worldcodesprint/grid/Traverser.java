@@ -38,7 +38,7 @@ public class Traverser {
   }
 
   private static int traverse(Grid grid, int row, int column, Vector<Integer> direction) {
-    int range = 1;
+    int range = 0;
 
     while (isGoodNode(grid.get(row + direction.get(1), column + direction.get(0)))) {
       range++;

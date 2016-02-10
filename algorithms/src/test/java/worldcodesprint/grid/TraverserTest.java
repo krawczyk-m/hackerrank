@@ -21,8 +21,8 @@ public class TraverserTest {
 
   @Test
   public void traverserTest() {
-    assertTrue(new Plus(1, 1, 2).compareTo(Traverser.plusFrom(grid, 1, 1)));
-    assertTrue(new Plus(0, 4, 1).compareTo(Traverser.plusFrom(grid, 0, 4)));
+    assertTrue(new Plus(1, 1, 1).compareTo(Traverser.plusFrom(grid, 1, 1)));
+    assertTrue(new Plus(0, 4, 0).compareTo(Traverser.plusFrom(grid, 0, 4)));
   }
 
 
