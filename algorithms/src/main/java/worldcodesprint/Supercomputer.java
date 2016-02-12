@@ -25,14 +25,35 @@ public class Supercomputer {
       }
     }
 
-    List<Plus> pluses = Traverser.findPluses(grid);
-    System.out.println(maxArea(pluses));
+    System.out.println(maxAreaProduct(grid));
   }
 
-  private static int maxArea(List<Plus> pluses) {
-    Collections.sort(pluses, (p1, p2) -> new Integer(p1.area()).compareTo(p2.area()));
+  public static int maxAreaProduct(Grid grid) {
+    List<Plus> pluses = Traverser.findPluses(grid);
+    return maxAreaProduct(pluses);
+  }
 
-    return 0;
+  public static int maxAreaProduct(List<Plus> pluses) {
+    if (pluses.size() < 2) {
+      return 0;
+    }
+
+    int product = -1;
+    while(product == -1) {
+      Collections.sort(pluses, (p1, p2) -> -1 * Integer.compare(p1.area(), p2.area())); // reverse order
+
+      int secondLargestArea = pluses.get(1).area();
+      for (int i = 1; i < pluses.size(); ++i) {
+        if (pluses.get(i).area() < secondLargestArea) {
+          break;
+        } else if (!doPlusesIntersect(pluses.get(0), pluses.get(i))) {
+          product = pluses.get(0).area() * pluses.get(1).area();
+        }
+      }
+
+      pluses.get(0).decreaseRange();
+    }
+    return product;
   }
 
   public static boolean doPlusesIntersect(Plus bigger, Plus smaller) {
@@ -44,9 +65,10 @@ public class Supercomputer {
     int diffRows = Math.abs(bigger.row() - smaller.row());
     int diffColumns = Math.abs(bigger.column() - smaller.column());
 
-    if (diffRows == 0 || diffColumns == 0) {
-      return (diffRows < bigger.range() + smaller.range() ||
-          diffColumns < bigger.range() + smaller.range());
+    if (diffRows == 0) {
+      return diffColumns  <= bigger.range() + smaller.range();
+    } else if (diffColumns == 0) {
+      return (diffRows <= bigger.range() + smaller.range());
     } else if ((smaller.row() < boundDown || smaller.row() > boundUp ) &&
         (smaller.column() < boundLeft || smaller.column() > boundRight)) {
       return false;
